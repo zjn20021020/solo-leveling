@@ -1,0 +1,70 @@
+{
+  "id": "solo-leveling",
+  "name": "Solo Leveling",
+  "description": "Notices when a conversation goes sideways — corrections, exasperation — and quietly banks the lesson as a reusable skill.",
+  "enabledByDefault": false,
+  "activation": {
+    "onStartup": true
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "description": "Master switch for the plugin."
+      },
+      "triggers": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "modelOverride": {
+            "type": "string",
+            "description": "Optional 'provider/model' for the plugin's own model calls. Defaults to the agent's primary model."
+          },
+          "minTone": {
+            "type": "string",
+            "enum": ["annoyed", "agitated", "hostile"],
+            "description": "Lowest tone that, by itself, warrants a retrospective."
+          }
+        }
+      },
+      "vault": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "author": {
+            "type": "string",
+            "description": "Value written to each skill's owner frontmatter field."
+          },
+          "stateDirName": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Folder under the skills root holding the registry index and purge scripts."
+          }
+        }
+      },
+      "recap": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Surface a digest of newly learned skills on the first turn of a session."
+          },
+          "writePurgeScript": {
+            "type": "boolean",
+            "description": "Also drop a shell script for deleting freshly learned skills."
+          }
+        }
+      },
+      "diagnostics": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "verbose": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

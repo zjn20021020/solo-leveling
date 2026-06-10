@@ -1,0 +1,45 @@
+{
+  "name": "solo-leveling",
+  "version": "0.1.0",
+  "description": "Solo Leveling — an OpenClaw plugin that watches each turn, captures moments where the user pushed back or grew frustrated, and distills the lesson into a reusable Skill.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "files": [
+    "src",
+    "dist",
+    "openclaw.plugin.json",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "openclaw": ">=2026.3.24-beta.2"
+  },
+  "peerDependenciesMeta": {
+    "openclaw": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "zod": "4.4.3"
+  },
+  "openclaw": {
+    "extensions": [
+      "./src/index.ts"
+    ],
+    "runtimeExtensions": [
+      "./dist/index.js"
+    ],
+    "compat": {
+      "pluginApi": ">=2026.3.24-beta.2",
+      "minGatewayVersion": "2026.3.24-beta.2"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "typescript": "6.0.3",
+    "vitest": "^4.1.8"
+  }
+}
